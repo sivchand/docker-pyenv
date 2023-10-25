@@ -5,6 +5,7 @@ LABEL MAINTAINER Siv Chand Koripella <sivchand@gmail.com>
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update && \
+    apt-get -y dist-upgrade && \
     apt-get install -y locales && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
     localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
@@ -23,7 +24,7 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev \ 
     libsqlite3-dev wget curl llvm libncurses5-dev xz-utils tk-dev \
-    libxml2-dev libxmlsec1-dev libffi-dev \
+    libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev \
     ca-certificates && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
